@@ -8,14 +8,26 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
-     <div class="alert-box" id="alert">알림창임
+     <div class="alert-box" id="alert">
+         <p id="txt">알림창임</p>
          <button onclick="alertOpen('none')">닫기</button>
      </div>
-     <button onclick="alertOpen('block')">버튼</button>
+     <button onclick="alertOpen('block','아이디를 입력하세요')">버튼1</button>
+     <button onclick="alertOpen('block','비밀번호를 입력하세요')">버튼2</button>
      <script>
-         function alertOpen(view){
+         function alertOpen(view,view2){
              document.getElementById('alert').style.display = view;
+             document.getElementById('txt').innerHTML = view2; 
          }
+        //  --------------------------------------------------------------------
+         //가변적인 곳에 구멍을 뚫는것이 좋다
+        //  function 알림창열기(구멍){
+        //      document.getElementById('alert').style.display = 구멍;
+        //  }
+         //구멍에 block넣어서 알림창열기함수 안의 코드 실행해줘
+         //코드를 호출하면 호출한곳에 코드가 남는다
+        //  알림창열기('block');
+        // -------------------------------------------------
      </script>
   </body>
 </html>

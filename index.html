@@ -9,8 +9,13 @@
   </head>
   <body>
      <div class="alert-box" id="alert">알림창임
-         <button onclick="document.getElementById('alert').style.display='none';">닫기</button>
+         <button onclick="alertOpen('none')">닫기</button>
      </div>
-     <button onclick="document.getElementById('alert').style.display='block';">버튼</button>
+     <button onclick="alertOpen('block')">버튼</button>
+     <script>
+         function alertOpen(view){
+             document.getElementById('alert').style.display = view;
+         }
+     </script>
   </body>
 </html>

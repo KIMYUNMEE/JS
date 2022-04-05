@@ -5,16 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
-      <h1 id="hello">안녕하세요</h1>
-      <script>
-          document.getElementById('hello').innerHTML="안녕코코야";
-          document.getElementById('hello').style.fontSize="16px";
-          document.getElementById('hello').style.color="red";
-          //.은 ~의 문서의 요소를 가져와 id가 hello인 거기의 글씨를 안녕코코야로 넣어줘
-          //getElementById는 셀렉터
-          //.innerHTML / .style / .color 이렇게 점찍는데 괄호없는건 메소드(또는 함수) 라고 부릅니다.
-          </script>
+     <div class="alert-box" id="alert">알림창임
+         <button onclick="document.getElementById('alert').style.display='none';">닫기</button>
+     </div>
+     <button onclick="document.getElementById('alert').style.display='block';">버튼</button>
   </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <!-- [숙제 - 버튼 2개를 만들어놓고 버튼1과 버튼2를 누르면 각각 다른 이름의 alert 박스가 나오도록 코드를 짜보기
+                - 버튼1을 누르면 '아이디를 입력하세요' 라는 alert 박스가 등장해야합니다.
+                - 버튼2를 누르면 '비밀번호를 입력하세요' 라는 alert 박스가 등장해야합니다. ] -->
+    <div class="alert-box" id="alert">
+        <p id="txt">알림창임</p>
+        <button onclick="alertOpen('none')">닫기</button>
+    </div>
+    <button onclick="alertOpen('block','아이디를 입력하세요')">버튼1</button>
+    <button onclick="alertOpen('block','비밀번호를 입력하세요')">버튼2</button>
+    <script>
+        function alertOpen(view, view2) {
+            document.getElementById('alert').style.display = view;
+            document.getElementById('txt').innerHTML = view2;
+        }
+        //  --------------------------------------------------------------------
+         //가변적인 곳에 구멍을 뚫는것이 좋다
+        //  function 알림창열기(구멍){
+        //      document.getElementById('alert').style.display = 구멍;
+        //  }
+         //구멍에 block넣어서 알림창열기함수 안의 코드 실행해줘
+         //코드를 호출하면 호출한곳에 코드가 남는다
+        //  알림창열기('block');
+        // 1.버튼1 누르면 alert 박스 안의 제목을 "아이디입력하세요"로 바꾸고
+         // 2. alert 박스 띄우기 
+        // 한글부터 상세히 짜고 그대로 자바스크립트로 바꾸면 쉽습니다.
+        // -------------------------------------------------
+    </script>
+</body>
+
+</html>

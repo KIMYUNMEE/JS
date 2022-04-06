@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <!-- [숙제- Alert 박스 닫는 코드도 function 이용해서 짧게 한 단어로 축약해보기] -->
+    <div class="alert-box" id="alert">알림창임
+        <button onclick="alertOpen('none')">닫기</button>
+    </div>
+    <button onclick="alertOpen('block')">버튼</button>
+    <script>
+        function alertOpen(view) {
+            document.getElementById('alert').style.display = view;
+        }
+    </script>
+</body>
+
+</html>
+<!-- 함수를 쓰는 이유는 ?
+1.긴 코드를 함수에 묶어 한 단어로 축약하고 싶을 때 쓰는 문법입니다.
+2.코드 재사용이 잦아 다음에도 쓰기 위해 모듈화해놓기 위해서 쓰는 문법입니다. -->

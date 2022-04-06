@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+    <p class="hello">안녕</p>
+    <button class="test-btn">버튼</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        //jquery는 라이브러리로 html코드를 더 간결하게 해줍니다 $는 querySelector .on은 addEventListener를 의미합니다.
+        $('.hello').html('바보');
+        $('.hello').css('color','red');
+        $('.hello').addClass('클래스명');
+        // class탈부착은 addClass,removeClass,toggleClass로 합니다.
+
+        // 자바스크립트 vs 제이쿼리 비교 
+        // 밑에서 보는 것처럼 class가 중복될 때 일반 자바스크립트에서는 3개 모두 한꺼번에 바보로 바꿀수가 없다.반드시 []로 하나하나 지정해주어야하는데
+        //그에 반해 $() 셀렉터는 그냥 querySelectorAll처럼 여러개가 있으면 전부 찾아줍니다. 그리고 거기에[0] 이런 식으로 순서지정해줄 필요없이 html() 붙이면 셀렉터로 찾은 모든 요소를 한 번에 조작하고 변경해줄 수 있습니다. 
+        document.querySelectorAll('.hello')[0].innerHTML='바보';
+        document.querySelectorAll('.hello')[1].innerHTML='바보';
+        document.querySelectorAll('.hello')[2].innerHTML='바보';
+        $('.hello').html('바보');
+        // 이벤트리스너는 addEventListener 대신 on 쓰면 똑같습니다. on은 $() 이걸로 찾은 것들에만 붙일 수 있습니다. 
+        $('.test-btn').on('click', function () {
+        // ui애니메이션은 fadeOut() , hide(), slideUp(), fadeToggle(), fadeIn(),show(). slideDown() 등이 있습니다.
+         $('.hello').fadeOut();
+  });
+    </script>
+
+</body>
+</html>
+<!-- 거의 모든 라이브러리는 body태그 맨밑에 작성하는것이 좋다 ex)jquery나 bootstrap등
+그리고 jquery를 cdn을 이용해서 가져오면 코드작성을 하단에 작성해주어야한다.=>성능을 빠르게 하기 위해서  -->

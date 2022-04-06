@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="alert-box" id="alert">
+        <p class="txt1">알림창임</p>
+        <button onclick="alertOpen('none')">닫기</button>
+    </div>
+    <button onclick="alertOpen('block','아이디를 입력하세요')">버튼1</button>
+    <button onclick="alertOpen('block','비밀번호를 입력하세요')">버튼2</button>
+    <script>
+        function alertOpen(view, view2) {
+            document.getElementById('alert').style.display = view;
+            document.getElementsByClassName('txt1').innerHTML = view2;
+        }
+    </script>
+</body>
+
+</html>
+<!-- getElementsByClassName는 기존 getElementById와 다르게 class로 요소를 가져오는 것으로 id는 
+html에서 1개만 선언이 가능 하지만 class는 className이 중복되도 괜찮습니다.
+그러므로 요소를 가져올 때 txt1이 2개 있으면 첫번째 txt1을 가져오고싶으면
+document.getElementsByClassName('txt1')[0]이라고 작성해 주어야합니다.  -->

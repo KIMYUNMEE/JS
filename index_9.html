@@ -55,8 +55,9 @@
             document.getElementsByClassName('black-bg')[0].classList.remove('show-modal');
         });
         document.querySelector('form').addEventListener('submit', function () {
+                // 입력한 값이 비어있을 때를 조건문으로 넣어줄 때 .value를 이용합니다. 값이 비어있을 때를 ''로 표기합니다.
                 if (document.getElementById('email').value == '') {
-                    alert('아이디 입력하쇼');
+                    alert('아이디 입력하세요.');
                 }
             });
     </script>

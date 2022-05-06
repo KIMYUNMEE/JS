@@ -110,14 +110,15 @@
     // 1초마다 코드를 실행하고 싶을 때(=X초마다 코드를 실행하고 싶으면 setInterval())
     //setInterval(function(){ 실행할코드~ }, 기다릴시간);
 
+
     //문제
-    //위에서 만든 <div>안에 "5초 이내 구매시 사은품 증정" 이라는 문자가 있습니다. 1초마다 5라는 문자를 1씩 감소시켜봅시다. 0이 되면 < div > 를 안보이게 처리합시다. 
+    ////위에서 만든 <div>안에 "5초 이내 구매시 사은품 증정" 이라는 문자가 있습니다. 1초마다 5라는 문자를 1씩 감소시켜봅시다. 0이 되면 < div > 를 안보이게 처리합시다. 
     setInterval(function () { 감자()}, 1000);
     var count=5;
     function 감자(){
         count--;
         document.querySelector('.alert span').innerHTML=count;
-        if(count==0)  clearTimeout(타이머);
+        if(count==0) document.querySelector('.alert').style.display="none";
     }
     </script>
     <!-- 잠깐상식 : 자바스크립트 문법 vs 브라우저 사용법

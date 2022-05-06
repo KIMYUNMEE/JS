@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body class="dark1">
+    <div class="black-bg">
+        <div class="white-bg">
+            <h4>로그인하세요</h4>
+            <!-- form을 쓰는 이유는 서버로 유저정보를 전달하려고 쓰는것
+            전송을 하려면 action이라는 속성 쓰기 지금 현재 서버가 없으니까 success.html파일로 대체하기 -->
+            <form action="success.html">
+                <div class="my-3">
+                    <input type="text" class="form-control" id="email">
+                </div>
+                <div class="my-3">
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <button type="submit" class="btn btn-primary" id="send">전송</button>
+                <button type="button" class="btn btn-danger" id="close">닫기</button>
+            </form>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand">Navbar</span>
+            <span class="badge bg-dark">Dark 🔄</span>
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+    <div class="main-bg">
+        <h4>Shirts on Sales</h4>
+        <button id="login" class="btn btn-danger">로그인</button>
+    </div>
+    <div class="alert alert-danger">
+        <span>5</span>초 이내 구매시 사은품 증정
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementsByClassName('navbar-toggler')[0].addEventListener('click', function () {
+            document.getElementsByClassName('list-group')[0].classList.toggle('show');
+        });
+        document.getElementById('login').addEventListener('click', function () {
+            document.getElementsByClassName('black-bg')[0].classList.add('show-modal');
+        });
+        document.getElementById('close').addEventListener('click', function () {
+            document.getElementsByClassName('black-bg')[0].classList.remove('show-modal');
+        });
+
+        // 전송버튼 누르면 저기 input에 입력한 값이 공백이면 알림창 띄어주세요~
+        document.getElementById("send").addEventListener('click', function (e) {
+           var 입력한값 = document.getElementById('email').value;
+            if (/\S+@\S+\.\S+/.test(입력한값)==false) {
+                alert('이메일형식아님')
+                e.preventDefault();
+            }
+             var 비번 = document.getElementById('password').value;
+            if (/[A-Z]/.test(비번) == false) {
+                alert('대문자없는데요')
+                e.preventDefault()
+            }
+        });
+
+        // badge 1회 클릭시 글자를 Light로 변경
+        // badge 2회 클릭시 글자를 Dark로 변경
+        // badge 3회 클릭시 글자를 Light로 변경
+        // badge 4회 클릭시 글자를 Dark로 변경
+        //위 문장의 규칙을 확인하면 클릭 횟수가 짝수, 홀수다. =>badge 클릭횟수가 홀수면 글자를 Light로 변경/badge 클릭횟수가 짝수면 글자를 Dark로 변경
+        //클릭횟수를 몇번 눌렀는지 변수에 기억해야할듯 합니다.
+        var count = 0;
+        document.querySelector('.badge').addEventListener('click', function () {
+            // 변수에 +1하는 방법 1)변수++ 2)변수+=1 3) 변수=변수+1
+            count++;
+            console.log(count);
+            if (count % 2 == 0) {
+                document.querySelector('.badge').innerHTML = "Dark 🔄";
+                document.querySelector('.dark1').classList.add('dark');
+            }
+            else {
+                document.querySelector('.badge').innerHTML = "Light 🔄";
+                document.querySelector('.dark1').classList.remove('dark');
+            }
+        });
+
+        //이 방법이 문자검사하는 가장 간단한 방법이지만하지만 - 한글이 들어있냐- 영어가 들어있냐 - A로 끝나냐 - 마침표 다음에 영어가 있냐 이런건 includes() 만으로 검사하기 어렵습니다. 
+       '문자'.includes('찾을단어')
+       //그래서 정규식으로 문자를 검색 할 수 있습니다.
+    //    +는 = 왼쪽문자를 반복해서 검사한다는 뜻입니다
+
+    //간단한 이메일 정규식은 /\S+@\S+\.\S+/인데 이뜻은 \S는 특수문자를 포함한 아무문자 한개입니다. 아무문자 다음에 @ 다음에 \S 다음에 .인데 마침표는 정규식에서 특수한 문법이기 때문에 마침표 문법을 쓰는게 아니라 진짜 마침표를 찾아달라라는 의미로 쓰려면 백슬래시를 앞에 붙여야합니다.
+    //그리고 +가 없으면 \S는 아무문자 여러개가 아닌 1개이기때문에 @이전에 문자 1개 밖에 못찾아서 반드시 +를 입력해주어야 +의 왼쪽문자를 반복검사해서 여러문자를 검사할수있습니다.
+    </script>
+  
+</body>
+
+</html>

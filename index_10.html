@@ -76,8 +76,18 @@
             e.preventDefault();
         }
         
-      
+    
     });
+    //input에만 해당하는 특별한 이벤트 input,change가 있는데 둘의 차이점은 
+    //change는 input에 값을 입력하고 포커스를 잃을 때 발생= 포커스란 값을 입력하고 다른곳을 클릭했을 때 
+    //이 이벤트로 ex)(경고) 지금 패스워드 4자 밖에 안됩니다. 같은 문구를 밑에 띄어주는 등 여러가지 생각해보기
+        document.getElementById('email').addEventListener('input', function () {
+        console.log("안녕");
+        });
+        document.getElementById('email').addEventListener('change', function () {
+        console.log("안녕");
+        });
+
 </script>
 </body>
 

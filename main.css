@@ -43,3 +43,20 @@
     background-color: black;
     color:white;
 }
+.slide-container {
+    width: 300vw;
+    transition: all 1s;
+    /* 2. 버튼2 누른 후 최종화면 만들기 (2step)
+    요소를 왼쪽으로 이동시키고 싶을때 transform이나 margin-left를 사용  */
+    /* transform: translateX(-100vw); */
+    /* margin-left:-100vw; */
+}
+
+.slide-box {
+    width: 100vw;
+    float: left;
+}
+
+.slide-box img {
+    width: 100%;
+}

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css">진
 </head>
 
 <body>
@@ -20,22 +20,16 @@
     <button onclick="alertOpen('block','아이디를 입력하세요')">버튼1</button>
     <button onclick="alertOpen('block','비밀번호를 입력하세요')">버튼2</button>
     <script>
+        function 알림창열기(구멍){
+            document.getElementById('alert').style.display = 구멍;
+        }
+        알림창열기('block');
+        //구멍자리에 'block'을 넣어서 알림창 열기 코드를 실행해줘 그러면 코드를 호출하면 호출한곳에 코드가 남는다
+        //가변적인 곳(고정적이지 않은 곳)에 구멍을 뚫는것이 좋다. 구멍을 파라미터라고 하는데 비슷한 기능이 있을 때 함수를 여러개 만드는것보다는 구멍을 뚫어놓은 다음 호출할때 구멍에 들어가는 값에 따라 달라지게 구멍을 뚫어놓는것이 좋다.
         function alertOpen(view, view2) {
             document.getElementById('alert').style.display = view;
             document.getElementById('txt').innerHTML = view2;
         }
-        //  --------------------------------------------------------------------
-         //가변적인 곳에 구멍을 뚫는것이 좋다
-        //  function 알림창열기(구멍){
-        //      document.getElementById('alert').style.display = 구멍;
-        //  }
-         //구멍에 block넣어서 알림창열기함수 안의 코드 실행해줘
-         //코드를 호출하면 호출한곳에 코드가 남는다
-        //  알림창열기('block');
-        // 1.버튼1 누르면 alert 박스 안의 제목을 "아이디입력하세요"로 바꾸고
-         // 2. alert 박스 띄우기 
-        // 한글부터 상세히 짜고 그대로 자바스크립트로 바꾸면 쉽습니다.
-        // -------------------------------------------------
     </script>
 </body>
 

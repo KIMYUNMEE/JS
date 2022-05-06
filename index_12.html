@@ -96,9 +96,21 @@
             else{
                 document.querySelector('.badge').innerHTML = "Light 🔄";
                 document.querySelector('.dark1').classList.remove('dark');
-            }
-            
+            }            
         });
+        // 변수 종류 1)var 2)let 3)const
+        // 1.재선언 가능 var / 재선언 불가 let,const
+        // 2.재할당 가능 var, let / 재할당 불가 const
+        // 3.범위 var은 함수안 let,const는 중괄호{}
+
+        
+        // var은 함수내에서 사용하면 바깥에서 console.log(나이)는 불가능하다. 반면 함수 바깥에서 만든 변수는 함수 안에서 사용가능
+        // function 함수() {
+        //         var 나이 = 20;
+        //         console.log(나이); //가능
+        //     }
+
+        //     console.log(나이); //불가능
     </script>
 </body>
 

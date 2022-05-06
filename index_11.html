@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="black-bg">
+        <div class="white-bg">
+            <h4>로그인하세요</h4>
+            <!-- form을 쓰는 이유는 서버로 유저정보를 전달하려고 쓰는것
+            전송을 하려면 action이라는 속성 쓰기 지금 현재 서버가 없으니까 success.html파일로 대체하기 -->
+            <form action="success.html">
+                <div class="my-3">
+                    <input type="text" class="form-control" id="email">
+                </div>
+                <div class="my-3">
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <button type="submit" class="btn btn-primary" id="send">전송</button>
+                <button type="button" class="btn btn-danger" id="close">닫기</button>
+            </form>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand">Navbar</span>
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <ul class="list-group">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+    </ul>
+    <div class="main-bg">
+        <h4>Shirts on Sales</h4>
+        <button id="login" class="btn btn-danger">로그인</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementsByClassName('navbar-toggler')[0].addEventListener('click', function () {
+            document.getElementsByClassName('list-group')[0].classList.toggle('show');
+        });
+        document.getElementById('login').addEventListener('click', function () {
+            document.getElementsByClassName('black-bg')[0].classList.add('show-modal');
+        });
+        document.getElementById('close').addEventListener('click', function () {
+            document.getElementsByClassName('black-bg')[0].classList.remove('show-modal');
+        });
+
+        // 전송버튼 누르면 저기 input에 입력한 값이 공백이면 알림창 띄어주세요~
+        document.getElementById("send").addEventListener('click', function (e) {
+            if (document.getElementById('email').value == '') {
+                alert('아이디 입력하쇼');
+                e.preventDefault();
+            }
+            if (document.getElementById('password').value == '') {
+                alert('비밀번호를 입력해주세요');
+                e.preventDefault();
+            } else if (document.getElementById('password').value.length < 6) {
+                alert('비밀번호가 너무 짧습니다.');
+                e.preventDefault();
+            }
+
+
+        });
+        //input에만 해당하는 특별한 이벤트 input,change가 있는데 둘의 차이점은 
+        //change는 input에 값을 입력하고 포커스를 잃을 때 발생= 포커스란 값을 입력하고 다른곳을 클릭했을 때 
+        //이 이벤트로 ex)(경고) 지금 패스워드 4자 밖에 안됩니다. 같은 문구를 밑에 띄어주는 등 여러가지 생각해보기
+        document.getElementById('email').addEventListener('input', function () {
+            console.log("안녕");
+        });
+        document.getElementById('email').addEventListener('change', function () {
+            console.log("안녕");
+        });
+        //if,function 연습문제1
+        function 삼육구게임(num) {
+                if (num % 9 == 0) {
+                    console.log("박수x2");
+                } else if (num % 3 == 0) {
+                    console.log('박수');
+                } else {
+                    console.log('통과');
+                }
+            }
+
+            삼육구게임(18);
+        //if,function 연습문제2
+    function 합격했나(구멍1, 구멍2) {
+        if (구멍1 + 구멍2 >= 120 && 구멍1 > 40 && 구멍2 > 40) {
+            console.log("합격");
+        } else {
+            console.log("불합격");
+        }
+    }
+    합격했나(100,100);
+    </script>
+</body>
+
+</html>
+<!-- else if는 그게아니면 만약에라고 해석합니다.else if 문의 경우 else 문의 특징도 가지고 있어서 조건식이 참이면 뒤에오는 else if문은 실행하지 않습니다.
+if문만 2개 있으면 위에 있는 if문이 참이든 아니든 둘째 if문도 항상 실행됩니다.
+if + else if가 있으면 -> else 덕분에 위의 조건식이 참이면 else 뒤는 스킵합니다. 그래서 조건식을 여러번 검사하는데 중간에 참이 나올 경우 코드실행을 중단하고 싶으면 else if 쓰면 좋습니다.   -->
+
+<!-- if ()에는 true나 false를 입력해야 더 잘 작동합니다. true나 false는 boolean타입으로 타입이란 자료가 무슨 형식을 가지고 있는지 구분하기 위한 용어입니다. ex)123은 숫자타입 "123"은 문자타입입니다.
+!=은 다름을 비교하는 비교 연산자입니다. 또한 ==은 느슨한 비교 ===은 엄격한 비교로 엄격한 비교는 타입까지 같아야합니다.
+if문에서 true로 인식하는 자료를 truthy라 하는데 1) 0제외 숫자 2)"문자" 3)[] 4){}이고 반대로 falsy 자료들은 1)0 2)null 3)undefined 4)NaN 입니다.
+조건식르 2개이상 동시에 비교하고 싶을 때 and비교연산자인 && or비교연산자인 ||가 있습니다.
+&&는 둘다 참이어야 전체가 참이 됩니다. ||는 적어도 하나라도 참이여야 전체가 참이 됩니다. -->

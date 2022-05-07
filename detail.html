@@ -38,60 +38,42 @@
         </select>
     </form>
     <script>
-        // 유저가 셔츠 고르면 form-hide 떼주세요~
-        // if(document.querySelector('.form-select').value == '셔츠'){
-        //     document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
-        // }
-        // 중요!! 여기서 이렇게 스크립트 코드를 실행해도 아무 반응이 없습니다.
-        // < script > 안에 대충 적은 코드는 페이지 로드시 1회 실행됨
-        // 지금 "유저가 셔츠선택하면 form-hide 제거해주세요~" 라고 코드짰는데 
-        // 이 코드는 < script > 안에 적었기 때문에 그냥 페이지 로드시 1회 실행되고 다시는 실행되지 않습니다.
-        // 그래서 저 코드를 < select > 조작할 때 마다!! 실행한다면 의도대로 잘 동작하지 않을까요
-        // select도 input처럼 input이벤트와 change이벤트를 갖기 때문에 한번이 아닌 select을 선택할때마다 이벤트가 발생해 코드가 실행됩니다.
         
-        var num= document.querySelectorAll('.form-select')[0];
-
+        var pants=[28,30,32];//일단 서버에서 가져온 데이터라고 치자. pants사이즈는 실시간 변화하므로 pants의 데이터갯수만큼 <option>생성하기!=>반복문쓰자!
+        //array에서 for대신에 forEach반복문도 많이 씁니다.
+        //forEach반복문은 콜백함수가 반드시 필요한데, 콜백함수에서 파라미터가 첫 파라미터는 반복문 돌 때 마다 array 안에 있던 하나하나의 데이터가 되고 둘째 파라미터는 반복문 돌 때 마다 0부터 1씩 증가하는 정수가 됩니다.
+            // pants.forEach(function (a, i) {
+            //     console.log(a)
+            // });
+        
+            var num= document.querySelectorAll('.form-select')[0];
         num.addEventListener('input',function(){
-            //일치하는 것을 변수 num으로 만들어서 num.value도 가능하지만 e.currentTarget도 this도 가능하다.커런트타켓은 이벤트리스너가 달린곳이다. 즉 num을 의미
             if (num.value == '셔츠') {
                 document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
-                 document.querySelectorAll('.form-select')[1].innerHTML = "";
+                document.querySelectorAll('.form-select')[1].innerHTML = "";
                 var 템플릿 = `<option>100</option><option>95</option>`;
                 document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', 템플릿);
   
             } else if (num.value == '바지') {
-               document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
-              document.querySelectorAll('.form-select')[1].innerHTML="";
-                var 템플릿 = `<option>28</option><option>30</option>`;
-                 document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', 템플릿);
+            document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+            document.querySelectorAll('.form-select')[1].innerHTML="";
+            pants.forEach(function (a) {
+                   document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', `<option>${a}</option>`);
+                })
             }
         });
-      </script>
-      <!-- 자바스크립트로 html 생성 방법 -->
-      <!-- 1.createElement() -->
-      <!-- <div id="test">
-    </div>
-    <script>
-        var a = document.createElement('p');
-        a.innerHTML = '안녕';
-        document.querySelector('#test').appendChild(a);
-    </script> -->
-    <!-- p라는 태그를 만들어서 a에 저장한 뒤 a에 값을 변경한 뒤 #test에 appendChild(a)를 줘서 아무데나 넣어주기 -->
-      
 
-      <!-- 2. insertAdjacentHTML() -->
+        // object 자료 다룰 때 for in 반복문 가능
+        var obj = { name: 'kim', age: 20 }
 
-      <!-- <div id="test">
-    </div>
-    <script>
-        var a = '<p>안녕</p>';
-        document.querySelector('#test').insertAdjacentHTML('beforeend', a);
-    </script> -->
-    <!-- beforeend' 이건 안쪽 맨 밑에 추가하라는 뜻입니다.
-    insertAdjacentHTML() 대신에 append도 가능합니다. 둘다 기존코드에 추가하는 것입니다. -->
-
-    <!-- 바지옵션 누르면 다른 사이즈가 나와야하는데(퀴즈) -->
-
+            for (var key in obj) {
+                console.log(key)
+            }
+            //여기서 key는 name,age를 의미합니다. 키값을 알고싶으면 console.log(obj[key])
+            //보너스 정보
+            //그냥 함수와 arrow function의 기능차이는 하나가 있는데 함수 안에서 this를 써야할 경우 - 그냥 함수는 함수 안에서 this를 알맞게 재정의해줍니다. - arrow function은 함수 안에서 this를 재정의해주지 않고 바깥에 있던 this를 그대로 씁니다.
+            //그래서 이벤트리스너 콜백함수안에서 this를 써야하면 arrow function 쓰면 의도와 다르게 동작할 수도 있습니다. 안쓰는게 좋습니다.
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

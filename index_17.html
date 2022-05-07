@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 회원약관인데 이 박스를 끝까지 스크롤하면 alert() 이런걸 띄우고 싶은겁니다. -->
+    <!-- div 스크롤바 내린 양 == div 실제높이일 경우 alert 띄워주세요~ 이렇게 짜면 될듯요? 근데
+    "페이지 스크롤바 내린 양" 구하는건 배웠는데 "div 박스 스크롤바 내린 양" 구하는 법은 안배웠습니다.
+    1.div 박스의 스크롤바 내린 양은=>박스를 셀렉터로 찾고 .scrollTop 붙이면 스크롤바를 위에서 부터 얼마나 내렸는지 알려줍니다
+    2.div 박스 높이 구하는 법 스크롤바가 생긴 박스의 경우 실제 높이같은게 궁금할 수 있습니다.
+    박스에 스타일로 넣은 height : 100px 이거 말고 스크롤가능한 실제높이 말입니다.
+    그럴 땐 셀렉터로 찾아서 .scrollHeight 붙이면 나옵니다. -->
+    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis
+        at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium
+        exercitationem.
+    </div>
+    <script>
+        //스크롤 관련유용한 기능들
+        //window.scrollY 사용하면 현재 페이지를 얼마나 위에서 부터 스크롤했는지 px 단위로 알려줍니다.
+        //window.scrollTo(x, y) 실행하면 강제로 스크롤바를 움직일 수 있습니다.
+        //window.scrollBy(x, y) 실행하면 현재 위치에서부터 스크롤해줍니다.
+        document.querySelector('.lorem').addEventListener('scroll', function () {
+                var 스크롤양 = document.querySelector('.lorem').scrollTop;
+                var 실제높이 = document.querySelector('.lorem').scrollHeight;
+                var 높이 = document.querySelector('.lorem').clientHeight;
+                 if (스크롤양 + 높이 > 실제높이 - 10) {
+                alert('다읽음')
+            }
+            });
+            // div 스크롤바 내린 양 == div 실제높이일 경우 alert 띄워주세요~ ▲ 뭔가 이상한데요  스크롤바를 끝까지 내려도 스크롤바 내린 양은 188.x
+            // div 실제높이는 288이 나옵니다.  같다고 비교하면 뭔가 안될 것 같군요. ▲ 왜냐면 스크롤바 내린 양은 진짜 스크롤바 내린 양일 뿐이라 그렇습니다. 거기에 박스가 보이는 높이는 포함안함 
+            // 왜냐면 스크롤바 내린 양은 진짜 스크롤바 내린 양일 뿐이라 그렇습니다. 
+            // 거기에 박스가 보이는 높이는 포함안함  div 스크롤바 내린 양 + div가 화면에 보이는 높이 == div 실제높이일 경우 alert 띄워주세요~
+    </script>
+</body>
+</html>

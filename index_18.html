@@ -102,7 +102,7 @@
             }
         });
  document.querySelector('.black-bg').addEventListener('click', function (e) {
-     //어떤 HTML 태그에 이벤트가 발생하면 그의 모든 상위요소까지 이벤트가 실행되는 현상을 이벤트 버블링이라고 합니다. 
+     //어떤 HTML 태그에 이벤트가 발생하면 그의 모든 상위요소까지 이벤트가 실행되는 현상을 이벤트 버블링이라고 합니다. ㅇ
      //현재 내가 클릭한것과 .black-bg가 같은가?
         if (e.target == document.querySelector('.black-bg')) {
             document.querySelector('.black-bg').classList.remove('show-modal');
@@ -111,7 +111,7 @@
 
      
     </script>
-  
+<!--e.target -현재 클릭한 실제 e.currentTarget-이벤트 리스너 달린곳 e.preventDefault()-이벤트 기본동작 막아줌 e.stoppropagation()-내상위요소로 이벤트 버블링 막아줌 -->
 </body>
 
 </html>

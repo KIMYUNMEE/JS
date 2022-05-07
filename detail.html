@@ -30,6 +30,7 @@
         <select class="form-select mt-2">
             <option>모자</option>
             <option>셔츠</option>
+            <option>바지</option>
         </select>
         <select class="form-select mt-2 form-hide">
             <option>95</option>
@@ -49,16 +50,48 @@
         // select도 input처럼 input이벤트와 change이벤트를 갖기 때문에 한번이 아닌 select을 선택할때마다 이벤트가 발생해 코드가 실행됩니다.
         
         var num= document.querySelectorAll('.form-select')[0];
+
         num.addEventListener('input',function(){
-            //일치하는 것을 변수 num으로 만들수도 있지만 e.currentTarget도 this도 가능하다.커런트타켓은 이벤트리스너가 달린곳이다. 즉 num을 의미
+            //일치하는 것을 변수 num으로 만들어서 num.value도 가능하지만 e.currentTarget도 this도 가능하다.커런트타켓은 이벤트리스너가 달린곳이다. 즉 num을 의미
             if (num.value == '셔츠') {
                 document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
-            }else{
-                document.querySelectorAll('.form-select')[1].classList.add('form-hide');
+                 document.querySelectorAll('.form-select')[1].innerHTML = "";
+                var 템플릿 = `<option>100</option><option>95</option>`;
+                document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', 템플릿);
+  
+            } else if (num.value == '바지') {
+               document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+              document.querySelectorAll('.form-select')[1].innerHTML="";
+                var 템플릿 = `<option>28</option><option>30</option>`;
+                 document.querySelectorAll('.form-select')[1].insertAdjacentHTML('beforeend', 템플릿);
             }
         });
-
       </script>
+      <!-- 자바스크립트로 html 생성 방법 -->
+      <!-- 1.createElement() -->
+      <!-- <div id="test">
+    </div>
+    <script>
+        var a = document.createElement('p');
+        a.innerHTML = '안녕';
+        document.querySelector('#test').appendChild(a);
+    </script> -->
+    <!-- p라는 태그를 만들어서 a에 저장한 뒤 a에 값을 변경한 뒤 #test에 appendChild(a)를 줘서 아무데나 넣어주기 -->
+      
+
+      <!-- 2. insertAdjacentHTML() -->
+
+      <!-- <div id="test">
+    </div>
+    <script>
+        var a = '<p>안녕</p>';
+        document.querySelector('#test').insertAdjacentHTML('beforeend', a);
+    </script> -->
+    <!-- beforeend' 이건 안쪽 맨 밑에 추가하라는 뜻입니다.
+    insertAdjacentHTML() 대신에 append도 가능합니다. 둘다 기존코드에 추가하는 것입니다. -->
+
+    <!-- 바지옵션 누르면 다른 사이즈가 나와야하는데(퀴즈) -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
